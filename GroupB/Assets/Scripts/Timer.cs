@@ -1,28 +1,28 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Timer : MonoBehaviour
+public class TimeCounter : MonoBehaviour
 {
-    public int countdownMinutes = 3;//  ï™
-    private float countdownSeconds;//Å@ïb
-    private Text timeText;
-    // Start is called before the first frame update
-    void Start()
+    public int countdownMinutes = 1;//ï™
+    private float countdownSeconds;//ïb
+    public Text timeText;
+
+    private void Start()
     {
         timeText = GetComponent<Text>();
         countdownSeconds = countdownMinutes * 60;
     }
 
-    // Update is called once per frame
     void Update()
     {
         countdownSeconds -= Time.deltaTime;
         var span = new TimeSpan(0, 0, (int)countdownSeconds);
-        timeText.text = span.ToString(@"3\:00");
-
+        timeText.text = span.ToString(@"mm\:ss");
+        //GetComponent<TextMeshProUGUI>().text = "time:" + Timer.ToString("f2");
         if (countdownSeconds <= 0)
         {
             // 0ïbÇ…Ç»Ç¡ÇΩÇ∆Ç´ÇÃèàóù
