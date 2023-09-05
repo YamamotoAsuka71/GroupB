@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class SpotLightCollider : MonoBehaviour
 {
+    public GameObject spotLight;
+    SpotLightController spot;
+    private void Start()
+    {
+        spot = spotLight.GetComponent<SpotLightController>();
+    }
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player")
+        if (spot.GetIsColliding() == false)
         {
-            Debug.Log("OK");
+            spot.SetObj(other.gameObject);
+            spot.SetIsColliding(true);
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        spot.SetIsColliding(false);
     }
 }
