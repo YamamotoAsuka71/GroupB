@@ -101,7 +101,7 @@ public class SelectLight : MonoBehaviour
         //Vector3でX,Y方向の回転の度合いを定義
         Vector3 angle = new Vector3(Input.GetAxis("Mouse X") * rotateSpeed, Input.GetAxis("Mouse Y") * rotateSpeed, 0);
 
-        //transform.RotateAround()をしようしてメインカメラを回転させる
+        //transform.RotateAround()をしようして選択しているライトを回転させる
         light.transform.RotateAround(transform.position, Vector3.up, angle.x);
         light.transform.RotateAround(transform.position, transform.right, -angle.y);
     }
