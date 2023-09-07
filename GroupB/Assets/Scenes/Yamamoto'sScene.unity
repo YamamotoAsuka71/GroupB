@@ -834,11 +834,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1312073141589921641, guid: c4577b1f8b62f6349bca11dcbb359210, type: 3}
       propertyPath: m_TagString
-      value: Blue
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3791121638277195246, guid: c4577b1f8b62f6349bca11dcbb359210, type: 3}
       propertyPath: m_Name
       value: BlueLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791121638277195246, guid: c4577b1f8b62f6349bca11dcbb359210, type: 3}
+      propertyPath: m_TagString
+      value: Red
       objectReference: {fileID: 0}
     - target: {fileID: 6124689732930844464, guid: c4577b1f8b62f6349bca11dcbb359210, type: 3}
       propertyPath: m_RootOrder
@@ -932,11 +936,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1312073141589921641, guid: c4577b1f8b62f6349bca11dcbb359210, type: 3}
       propertyPath: m_TagString
-      value: Green
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3791121638277195246, guid: c4577b1f8b62f6349bca11dcbb359210, type: 3}
       propertyPath: m_Name
       value: GreenLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791121638277195246, guid: c4577b1f8b62f6349bca11dcbb359210, type: 3}
+      propertyPath: m_TagString
+      value: Red
       objectReference: {fileID: 0}
     - target: {fileID: 6124689732930844464, guid: c4577b1f8b62f6349bca11dcbb359210, type: 3}
       propertyPath: m_RootOrder
@@ -1107,6 +1115,10 @@ PrefabInstance:
       value: RedLight
       objectReference: {fileID: 0}
     - target: {fileID: 1312073141589921641, guid: c4577b1f8b62f6349bca11dcbb359210, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791121638277195246, guid: c4577b1f8b62f6349bca11dcbb359210, type: 3}
       propertyPath: m_TagString
       value: Red
       objectReference: {fileID: 0}
