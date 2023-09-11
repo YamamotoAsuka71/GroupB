@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpotLightController : MonoBehaviour
 {
     const float defaultLength = 9.5f;
-    const float defaultDiameter = 4f;
     float distance;
     float percentage;
     private bool isColliding = false;
@@ -23,6 +22,10 @@ public class SpotLightController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (obj == null)
+        {
+            isColliding = false;
+        }
         if (isColliding == true)
         {
             distance = (obj.transform.position - transform.position).magnitude;
@@ -37,6 +40,5 @@ public class SpotLightController : MonoBehaviour
         {
             isColliding = false;
         }
-
     }
 }

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5127992026484544732}
   - component: {fileID: 5415691352860849692}
   - component: {fileID: 2264267398518408787}
-  - component: {fileID: 6531832571255426189}
+  - component: {fileID: 9003656115386459515}
+  - component: {fileID: 5730682945554005275}
   m_Layer: 0
   m_Name: hitodama_s_blue
   m_TagString: Blue
@@ -34,7 +35,7 @@ Transform:
   - {fileID: 2275979703658179141}
   - {fileID: 864559488601440764}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5415691352860849692
 Animator:
@@ -82,10 +83,22 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 0
---- !u!64 &6531832571255426189
-MeshCollider:
+--- !u!114 &9003656115386459515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313265342645018553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bca72dc37dbb2b43a38ec9275c5a725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &5730682945554005275
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -99,13 +112,14 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Radius: 0.22
+  m_Height: 0.52
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!1 &465358364692407576
 GameObject:
   m_ObjectHideFlags: 0
