@@ -8,7 +8,8 @@ public class CameraController : MonoBehaviour
 {
 
     private GameObject mainCamera;              //ƒƒCƒ“ƒJƒƒ‰Ši”[—p
-    public float rotateSpeed = 2.0f;
+    float rotateSpeedX = 2.0f;
+    float rotateSpeedY = 2.0f;
 
 
     float x;
@@ -39,11 +40,22 @@ public class CameraController : MonoBehaviour
     private void rotateCamera()
     {
         //Vector3‚ÅX,Y•ûŒü‚Ì‰ñ“]‚Ì“x‡‚¢‚ð’è‹`
-        Vector3 angle = new Vector3(Input.GetAxis("Mouse X") * rotateSpeed, Input.GetAxis("Mouse Y") * rotateSpeed, 0);
-
+        Vector3 angle = new Vector3(Input.GetAxis("Mouse X") * rotateSpeedX, Input.GetAxis("Mouse Y") * rotateSpeedY, 0);
         //transform.RotateAround()‚ð‚µ‚æ‚¤‚µ‚ÄƒƒCƒ“ƒJƒƒ‰‚ð‰ñ“]‚³‚¹‚é
+
+        float currentYAngle = transform.eulerAngles.y;
+        // Œ»Ý‚ÌŠp“x‚ª180‚æ‚è‘å‚«‚¢ê‡
+        if (currentYAngle % 360 >= 90 && currentYAngle % 360 <= 270 || currentYAngle % 360 <= -90 && currentYAngle % 360 >= -270)
+        {
+            rotateSpeedY = -2.0f;
+        }
+        else
+        {
+            rotateSpeedY = 2.0f;
+        }
         mainCamera.transform.RotateAround(mainCamera.transform.position, Vector3.up, angle.x);
         mainCamera.transform.RotateAround(mainCamera.transform.position, Vector3.right, -angle.y);
+        
         mainCamera.transform.localEulerAngles = new Vector3(mainCamera.transform.localEulerAngles.x, mainCamera.transform.localEulerAngles.y, 0.0f);
     }
 
