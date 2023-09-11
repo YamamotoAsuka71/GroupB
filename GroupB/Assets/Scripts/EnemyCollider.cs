@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyCollider : MonoBehaviour
 {
     bool isDestroy = false;
+    bool isRed = false, isGreen = false, isBlue = false;
     int timerCount = 0;
     // Start is called before the first frame update
     void Start()
@@ -16,43 +17,57 @@ public class EnemyCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
         if (gameObject.tag == "Red")
         {
-            if (other.tag == "Green" || other.tag == "Blue")
-            {
-                isDestroy = false;
-            }
-            else if (other.tag == "Red")
+            if (isRed == true && isGreen == false && isBlue == false)
             {
                 isDestroy = true;
             }
         }
         if (gameObject.tag == "Green")
         {
-            if (other.tag == "Red" || other.tag == "Blue")
-            {
-                isDestroy = false;
-            }
-            else if (other.tag == "Green")
+            if (isRed == false && isGreen == true && isBlue == false)
             {
                 isDestroy = true;
             }
         }
         if (gameObject.tag == "Blue")
         {
-            if (other.tag == "Green" || other.tag == "Red")
-            {
-                isDestroy = false;
-            }
-            else if (other.tag == "Blue")
+            if (isRed == false && isGreen == false && isBlue == true)
             {
                 isDestroy = true;
             }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Red")
+        {
+            isRed = true;
+        }
+        if (other.tag == "Green")
+        {
+            isGreen = true;
+        }
+        if (other.tag == "Blue")
+        {
+            isBlue = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Red")
+        {
+            isRed = false;
+        }
+        if (other.tag == "Green")
+        {
+            isGreen = false;
+        }
+        if (other.tag == "Blue")
+        {
+            isBlue = false;
         }
     }
     private void FixedUpdate()
