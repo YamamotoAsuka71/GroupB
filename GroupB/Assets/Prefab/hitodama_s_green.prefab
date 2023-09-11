@@ -168,6 +168,8 @@ GameObject:
   - component: {fileID: 2864117764407178239}
   - component: {fileID: -2753248066671183503}
   - component: {fileID: 2169757103489272780}
+  - component: {fileID: -8924791229058428676}
+  - component: {fileID: -7893732686045535280}
   m_Layer: 0
   m_Name: hitodama_s_green
   m_TagString: Green
@@ -275,6 +277,41 @@ CapsuleCollider:
   m_Height: 0.52
   m_Direction: 1
   m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!195 &-8924791229058428676
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4839397265758714172}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &-7893732686045535280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4839397265758714172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2bdd70ba2f3764393a727fa889952d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 5171520238849369431, guid: 63bce2f86392e084280894a7e900d183, type: 3}
 --- !u!1 &5572400053470953620
 GameObject:
   m_ObjectHideFlags: 0
