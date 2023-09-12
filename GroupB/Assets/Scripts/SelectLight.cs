@@ -7,13 +7,13 @@ using TMPro;
 
 public class SelectLight : MonoBehaviour
 {
-    bool allSelect = false;
-    int selectNum = 0;
-    public GameObject[] Lights = new GameObject[4];
-    public GameObject setColor;
+    bool allSelect = false; //  ライト全選択のフラグ
+    int selectNum = 0;  //  ライト識別番号
+    public GameObject[] Lights = new GameObject[4]; //  ライト格納
+    public GameObject setColor; // 現在のカラー表示テキスト格納用 
     TextMeshProUGUI colorText;
-    float rotateSpeed = 2.0f;
-    new GameObject light = null;
+    float rotateSpeed = 2.0f;   //  ライト回転スピード
+    new GameObject light = null;    //  現在のライト格納用
 
     private void Start()
     {
@@ -22,81 +22,81 @@ public class SelectLight : MonoBehaviour
     }
     void Update()
     {
-        if (allSelect == false)
+        if (allSelect == false) //  現在のライトが全選択でないなら
         {
-            WheelCount();
+            WheelCount();   //  色の選択を行う
         }
-        SelectedNum();
-        SwitchingLight();
-        if (Input.GetMouseButton(1))
+        SelectedNum();  //  番号によるライト選択
+        SwitchingLight();   //  ライトの全選択と個別選択切り替え
+        if (Input.GetMouseButton(1))    // マウスが右クリックされている間
         {
-            //rotateCameraの呼び出し
-            rotateCamera();
+            //RotateLightの呼び出し
+            RotateLight();
         }
     }
 
     void WheelCount()
     {
         //回転の取得
-        float wh = Input.GetAxis("Mouse ScrollWheel");
-        if (wh > 0)
+        float wh = Input.GetAxis("Mouse ScrollWheel");  //  マウスホイールの回転取得
+        if (wh > 0) //  回転情報が０より大きければ
         {
-            selectNum++;
+            selectNum++;    //  色識別番号をプラスする
         }
-        else if (wh < 0)
+        else if (wh < 0)    //  回転情報が０より小さければ
         {
-            selectNum--;
+            selectNum--;    //  色識別番号をマイナスする
         }
-        if (selectNum > 1)
+        if (selectNum > 1)  //  色識別番号が１を超えたら
         {
-            selectNum = 1;
+            selectNum = -1; //  -１にする
         }
-        if (selectNum < -1)
+        if (selectNum < -1) //  色識別番号が-１を下回ったら
         {
-            selectNum = -1;
+            selectNum = 1;  //  １にする
         }
     }
     void SelectedNum()
     {
-        if (allSelect == false)
+        if (allSelect == false) //  ライトが個別選択状態だったら
         {
             switch (selectNum)
             {
-                case 0:
-                    colorText.text = "<color=#FF0000>Red";
-                    light = Lights[1];
+                case 0: //  色識別番号が０の時
+                    colorText.text = "<color=#FF0000>Red";  //  現在の色を表示するテキストを赤に設定
+                    light = Lights[1];  //  赤色のライト格納
                     break;
-                case 1:
-                    colorText.text = "<color=#4169E1>Blue";
-                    light = Lights[3];
+                case 1: //  色識別番号が１の時
+                    colorText.text = "<color=#4169E1>Blue"; //  現在の色を表示するテキストを青に設定
+                    light = Lights[3];  //  青色のライトを格納
                     break;
-                case -1:
-                    colorText.text = "<color=#00FF7F>Green";
-                    light = Lights[2];
+                case -1:    //  色識別番号が-１の時
+                    colorText.text = "<color=#00FF7F>Green";    //  現在の色を表示するテキストを緑に設定
+                    light = Lights[2];  //  緑色のライトを格納
                     break;
             }
         }  
     }
     void SwitchingLight()
     {
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(2))    //  マウスホイールがクリックされたら
         {
-            if (allSelect == false)
+            if (allSelect == false) //  ライトが個別選択の場合
             {
-                for (int i = 1; i < 4; i++)
+                for (int i = 1; i < 4; i++) //  全てのライトを回す
                 {
-                    Lights[i].transform.localEulerAngles = new Vector3(-90.0f, 0.0f, 0.0f);
+                    Lights[i].transform.localEulerAngles = new Vector3(-90.0f, 0.0f, 0.0f); //  初期値に戻す
                 }
             }
-            allSelect = !allSelect;
+            allSelect = !allSelect; //  ライトの選択状態を反転
         }
-        if (allSelect == true)
+        if (allSelect == true)  //  ライトが全選択の場合
         {
-            light = Lights[0];
-            colorText.text = "AllColor";
+            light = Lights[0];  //  全部のライトを動かすライトを選択
+            colorText.text = "AllColor";    //  現在の色を表示するテキストを全ての色に設定
         }
     }
-    void rotateCamera()
+    void RotateLight()
     {
         //Vector3でX,Y方向の回転の度合いを定義
         Vector3 angle = new Vector3(Input.GetAxis("Mouse X") * rotateSpeed, Input.GetAxis("Mouse Y") * rotateSpeed, 0);
