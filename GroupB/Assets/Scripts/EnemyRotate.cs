@@ -6,7 +6,7 @@ public class EnemyRotate : MonoBehaviour
 {
     public GameObject redEnemy, greenEnemy, blueEnemy;  //  雑魚敵とする赤、緑、青のエネミーを格納
     GameObject obj, enemy;  //  子として生成するための変数とどのエネミーか判別するための格納用変数
-    const float POS_Z = -0.3f, POS_X_1 = 0.75f, POS_X_2 = -0.75f;   //  エネミー生成ポジション
+    const float POS_Z = -0.3f, POS_X_1 = 1.75f, POS_X_2 = -1.75f;   //  エネミー生成ポジション
     // Start is called before the first frame update
     void Start()
     {

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class TimeCounter : MonoBehaviour
 {
-    public int countdownMinutes = 3;//分
+    int countdownMinutes = 2;//分
     private float countdownSeconds;//秒
     public Text timeText;
 
@@ -16,16 +16,20 @@ public class TimeCounter : MonoBehaviour
 
     void Update()
     {
-        //ここで2:30みたいな表示にしている
-        countdownSeconds -= Time.deltaTime;
-        var span = new TimeSpan(0, 0, (int)countdownSeconds);
-        timeText.text = span.ToString(@"mm\:ss");
+        
 
 　　　　//0秒になったときの処理
         if (countdownSeconds <= 0)
         {
-            //0秒になったら消す
-            Destroy(timeText);
+            
         }
+        else
+        {
+            countdownSeconds -= Time.deltaTime;
+        }
+        //ここで2:30みたいな表示にしている
+
+        var span = new TimeSpan(0, 0, (int)countdownSeconds);
+        timeText.text = span.ToString(@"mm\:ss");
     }
 }

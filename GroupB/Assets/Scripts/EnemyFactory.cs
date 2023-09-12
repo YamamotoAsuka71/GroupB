@@ -6,9 +6,6 @@ public class EnemyFactory : MonoBehaviour
     public GameObject red;//ÔF‚Ì“G
     public GameObject blue;//ÂF‚Ì“G
     public GameObject green;//—ÎF‚Ì“G
-    public GameObject yellowllow;//‰©F‚Ì“G
-    public GameObject purple; //‡F‚Ì“G
-    public GameObject Variant;//‹óF‚Ì“G
     void Start()
     {
         //FunctionTest‚ğ3•b–ˆ‚ÉŒÄ‚Ño‚µ‚Ü‚·B
@@ -18,34 +15,24 @@ public class EnemyFactory : MonoBehaviour
     void Generation()
     {
         //ƒ‰ƒ“ƒ_ƒ€‚Å”š‚ğŒˆ‚ß‚éA‚»‚µ‚Ä‚»‚Ì”š‚Å“G‚ğŒˆ‚ß‚Ä¶¬‚µ‚Ä‚¢‚é
-        float target = Random.Range(0, 975);
-        if (target == 0||target<225)
+        float target = Random.Range(0, 3);
+        if (target == 0)
         {
             Instantiate(red, transform.position, Quaternion.Euler(0.0f, 180.0f, 0.0f));
+            PlayerPrefs.SetInt("smallfry", PlayerPrefs.GetInt("smallfry", 0) + 1);
+            PlayerPrefs.Save();
         }
-        else if(target<=225||target<450)
+        else if (target == 1)
         {
             Instantiate(blue, transform.position, Quaternion.Euler(0.0f, 180.0f, 0.0f));
-        }
-        else if(target<=450||target<675)
-        {
-            Instantiate(green, transform.position, Quaternion.Euler(0.0f, 180.0f, 0.0f));
-        }
-        else if (target<=675||target<775)
-        {
-            Instantiate(yellowllow, transform.position, Quaternion.Euler(0.0f, 180.0f, 0.0f));
-        }
-        else if(target<=775||target<875)
-        {
-            Instantiate(purple, transform.position, Quaternion.Euler(0.0f, 180.0f, 0.0f));
-        }
-        else if (target<=875||target<975)
-        {
-            Instantiate(Variant, transform.position, Quaternion.Euler(0.0f, 180.0f, 0.0f));
+            PlayerPrefs.SetInt("smallfry", PlayerPrefs.GetInt("smallfry", 0) + 1);
+            PlayerPrefs.Save();
         }
         else
         {
-
+            Instantiate(green, transform.position, Quaternion.Euler(0.0f, 180.0f, 0.0f));
+            PlayerPrefs.SetInt("smallfry", PlayerPrefs.GetInt("smallfry", 0) + 1);
+            PlayerPrefs.Save();
         }
     }
 }

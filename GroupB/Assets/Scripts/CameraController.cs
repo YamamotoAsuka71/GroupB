@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
 
     float x;
     float z;
-    float moveSpeed = 10.0f;
+    float moveSpeed = 5.0f;
     Rigidbody rb;
     //ŒÄ‚Ño‚µ‚ÉÀs‚³‚ê‚éŠÖ”
     void Start()
