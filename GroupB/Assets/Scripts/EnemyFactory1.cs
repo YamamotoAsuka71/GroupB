@@ -12,7 +12,7 @@ public class EnemyFactory1 : MonoBehaviour//BOSS等雑魚以外の生成スクリプト
     public GameObject purple; //紫色の敵
     public GameObject Variant;//空色の敵
     bool flag = false;
-    int timerCount = 25;
+    int timerCount = 50;
     float timer = 0.0f;
 
     void Start()
@@ -25,7 +25,7 @@ public class EnemyFactory1 : MonoBehaviour//BOSS等雑魚以外の生成スクリプト
     void Update()
     {
         //5回雑魚を生成したら強い敵を生成
-        if (PlayerPrefs.GetInt("smallfry", 0) >= 18)
+        if (PlayerPrefs.GetInt("smallfry", 0) >= 5)
         {
             flag = true;
         }
@@ -36,7 +36,7 @@ public class EnemyFactory1 : MonoBehaviour//BOSS等雑魚以外の生成スクリプト
         if (flag == true)
         {
             timer += Time.deltaTime;
-            if (timer >= 3.0f)
+            if (timer >= 0.5f)
             {
                 BossGeneration();
             }
@@ -96,7 +96,7 @@ public class EnemyFactory1 : MonoBehaviour//BOSS等雑魚以外の生成スクリプト
         if (flag == false)
         {
             timer = 0.0f;
-            if (timerCount >= 150)
+            if (timerCount >= 50)
             {
                 Generation();
                 timerCount = 0;
