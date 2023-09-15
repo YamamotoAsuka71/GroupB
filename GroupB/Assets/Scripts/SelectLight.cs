@@ -14,6 +14,7 @@ public class SelectLight : MonoBehaviour
     TextMeshProUGUI colorText;
     float rotateSpeed = 2.0f;   //  ライト回転スピード
     new GameObject light = null;    //  現在のライト格納用
+    float rotateSpeedY = 2.0f;
 
     private void Start()
     {
@@ -85,7 +86,7 @@ public class SelectLight : MonoBehaviour
             {
                 for (int i = 1; i < 4; i++) //  全てのライトを回す
                 {
-                    Lights[i].transform.localEulerAngles = new Vector3(-90.0f, 0.0f, 0.0f); //  初期値に戻す
+                    Lights[i].transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f); //  初期値に戻す
                 }
             }
             allSelect = !allSelect; //  ライトの選択状態を反転
@@ -99,10 +100,21 @@ public class SelectLight : MonoBehaviour
     void RotateLight()
     {
         //Vector3でX,Y方向の回転の度合いを定義
-        Vector3 angle = new Vector3(Input.GetAxis("Mouse X") * rotateSpeed, Input.GetAxis("Mouse Y") * rotateSpeed, 0);
+        Vector3 angle = new Vector3(Input.GetAxis("Mouse X") * rotateSpeed, Input.GetAxis("Mouse Y") * rotateSpeedY, 0);
 
+        float currentYAngle = transform.eulerAngles.y;
+        // 現在の角度が180より大きい場合
+        if (currentYAngle % 360 >= 90 && currentYAngle % 360 <= 270 || currentYAngle % 360 <= -90 && currentYAngle % 360 >= -270)
+        {
+            rotateSpeedY = -2.0f;
+        }
+        else
+        {
+            rotateSpeedY = 2.0f;
+        }
         //transform.RotateAround()をしようして選択しているライトを回転させる
         light.transform.RotateAround(transform.position, Vector3.up, angle.x);
-        light.transform.RotateAround(transform.position, transform.right, -angle.y);
+        light.transform.RotateAround(transform.position, Vector3.right, -angle.y);
+        light.transform.localEulerAngles = new Vector3(light.transform.localEulerAngles.x, light.transform.localEulerAngles.y, 0.0f);
     }
 }
