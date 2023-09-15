@@ -82,7 +82,13 @@ public class EnemyCollider2 : MonoBehaviour
             isBlue = false; //  青色のライトが当たっていないとする
         }
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Life")
+        {
+            PlayerPrefs.SetInt("life", PlayerPrefs.GetInt("life", 0) - 1);
+        }
+    }
     private void FixedUpdate()
     {
         if (isDestroy == true)  //  破壊可能なら

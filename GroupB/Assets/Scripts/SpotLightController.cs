@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpotLightController : MonoBehaviour
 {
-    const float defaultLength = 9.5f;   //  ライトの当たり判定の最大(最初)の大きさ
+    const float defaultLength = 5f;   //  ライトの当たり判定の最大(最初)の大きさ
     float distance; //  オブジェクトからライトの持ちてに当たる部分までの距離
     float percentage;   //  ライトの当たり判定を可変するための比率
     private bool isColliding = false;   //  ライトが他のオブジェクトに当たっているかのフラグ
@@ -27,6 +27,7 @@ public class SpotLightController : MonoBehaviour
         }
         if (isColliding == true)    //  何かが当たっているならば
         {
+            Debug.Log("a");
             distance = (obj.transform.position - transform.position).magnitude; //  ライトの持ちてに当たる部分から他のオブジェクトまでの距離を計算
             percentage = distance / defaultLength;  //  距離ともともとの長さから当たり判定の比率を計算
             transform.localScale = new Vector3(1.0f * percentage, 1.0f * percentage, 1.0f * percentage);    //  当たり判定の大きさを変える
@@ -38,6 +39,10 @@ public class SpotLightController : MonoBehaviour
         if (distance > defaultLength)   //  距離が基本の長さより上回ったら
         {
             isColliding = false;    //  当たっていないとする
+        }
+        if (transform.localScale.x > 1.0f || transform.localScale.y > 1.0f || transform.localScale.z > 1.0f)
+        {
+            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);   //  当たり判定の大きさを元に戻す
         }
     }
 }

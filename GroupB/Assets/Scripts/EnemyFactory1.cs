@@ -12,7 +12,7 @@ public class EnemyFactory1 : MonoBehaviour//BOSS等雑魚以外の生成スクリプト
     public GameObject purple; //紫色の敵
     public GameObject Variant;//空色の敵
     bool flag = false;
-    int timerCount = 150;
+    int timerCount = 25;
     float timer = 0.0f;
 
     void Start()

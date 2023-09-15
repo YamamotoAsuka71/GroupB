@@ -12,6 +12,7 @@ TagManager:
   - Yellow
   - Magenta
   - Wall
+  - Life
   layers:
   - Default
   - TransparentFX
